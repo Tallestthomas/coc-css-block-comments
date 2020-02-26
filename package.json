@@ -30,13 +30,6 @@
     "webpack-cli": "^3.3.10"
   },
   "contributes": {
-    "commands": [
-      {
-        "title": "Get file types",
-        "category": "CssBlockComments",
-        "command": "cssBlockComments.formatFiles"
-      }
-    ],
     "configuration": {
       "type": "object",
       "title": "coc-css-block-comments configuration",
