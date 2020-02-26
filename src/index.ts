@@ -18,6 +18,14 @@ const parseAndAppendSelectors = async () => {
   const buffer = await nvim.buffer;
   const bufferLength = await buffer.length;
 
+  const config = workspace.getConfiguration("cssBlockComments");
+  const enabledLanguages = config.get<string[]>('enabledLanguages') || [];
+  const filetype = await buffer.getOption('filetype');
+
+  const enabled = enabledLanguages.some(lang => lang === filetype );
+
+  if(!enabled) return;
+
   let selector = "";
   let selectors: string[] = [];
   let cleanedSelectors: string[] = [];
@@ -62,16 +70,11 @@ const parseAndAppendSelectors = async () => {
 
 export async function activate(context: ExtensionContext): Promise<void> {
   const config = workspace.getConfiguration("cssBlockComments");
-  const enabledLanguages = config.get<string[]>('enabledLanguages') || [];
-
-  const enabled = enabledLanguages.some(lang => workspace.filetypes.has(lang));
-
-  if(!enabled) return;
 
   context.subscriptions.push(
     commands.registerCommand("cssBlockComments.formatFile", async () => {
       parseAndAppendSelectors();
-    })
+    }),
   );
 
   if (config.get<boolean>("formatOnSave", true)) {
