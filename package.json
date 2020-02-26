@@ -1,6 +1,6 @@
 {
   "name": "coc-css-block-comments",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Creates css block identifier comments",
   "author": "Thomas Rasmussen <trasmussen34@gmail.com>",
   "license": "MIT",
