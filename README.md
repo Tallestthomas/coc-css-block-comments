@@ -1,5 +1,5 @@
-# css-block-comments
-
+# coc-css-block-comments
+![gif of what the plugin does](https://i.imgur.com/6io8zeg.gif)
 
 ## Install
 
